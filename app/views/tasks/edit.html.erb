@@ -2,4 +2,5 @@
  
 <%= render "form" %>
 
+<%= link_to "タスクを削除する", task_path(@task.id), method: :delete %>
 <%= link_to "タスク一覧画面へ戻る", tasks_path %>
