@@ -10,7 +10,7 @@ class TasksController < ApplicationController
     def create
         @task = Task.new(task_params)
         @task.save
-        redirect_to tasks_path
+        redirect_to tasks_path, notice: "タスク「#{@task.name}」を作成しました"
     end
 
     def edit
@@ -20,13 +20,13 @@ class TasksController < ApplicationController
     def update
         @task = find_task_by_id
         @task.update(task_params)
-        redirect_to tasks_path
+        redirect_to tasks_path, notice: "タスク「#{@task.name}」を更新しました"
     end
 
     def destroy
         @task = find_task_by_id
         @task.destroy
-        redirect_to tasks_path
+        redirect_to tasks_path, notice: "タスク「#{@task.name}」を削除しました"
     end
 
     private
