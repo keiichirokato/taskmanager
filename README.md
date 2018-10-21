@@ -28,6 +28,7 @@ Things you may want to cover:
 - task_id       VARCHAR(255)    ->  PRIMARY KEY
 - user_id       VARCHAR(255)    ->  FOREIGN KEY
 - name          VARCHAR(255)
+- detail        VARCHAR(10000)
 - priority      INT(1)
 - status        VARCHAR(255)
 - deadline_at   TIMESTAMP
