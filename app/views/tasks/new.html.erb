@@ -1,14 +1,3 @@
-<%= form_for @task do |f| %>
-    <p>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-    </p>
-  
-    <p>
-    <%= f.label :detail %>
-    <%= f.text_field :detail %>
-    </p>
-    
-    <%= f.submit %>
-  
-<% end %>
+<h2>タスク新規登録</h2>
+ 
+<%= render "form" %>
