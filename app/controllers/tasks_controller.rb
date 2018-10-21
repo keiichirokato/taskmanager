@@ -13,6 +13,10 @@ class TasksController < ApplicationController
         redirect_to tasks_path, notice: "タスク「#{@task.name}」を作成しました"
     end
 
+    def show
+        @task = find_task_by_id
+    end
+
     def edit
         @task = find_task_by_id
     end
