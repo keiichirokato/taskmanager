@@ -16,7 +16,13 @@ Things you may want to cover:
 
 * Database initialization
 
-* Table schema
+## How to deploy
+1. `heroku login` でherokuにログインする
+2. `git push heroku master` でデプロイする
+2. `heroku run rails db:migrate` でmigrateする
+3. `https://evening-plains-12996.herokuapp.com/` にアクセスし、結果を確認する
+
+## Table schema
 ### Users
 - user_id       VARCHAR(255)    ->  PRIMARY KEY
 - address       VARCHAR(255)
@@ -51,7 +57,5 @@ Things you may want to cover:
 * How to run the test suite
 
 * Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
 
 * ...
