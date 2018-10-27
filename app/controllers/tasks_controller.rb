@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
     def index
-        @tasks = Task.all
+        @tasks = Task.order('created_at DESC')
     end
 
     def new
@@ -10,7 +10,11 @@ class TasksController < ApplicationController
     def create
         @task = Task.new(task_params)
         @task.save
-        redirect_to tasks_path, notice: "タスク「#{@task.name}」を作成しました"
+        if @task.save
+　　         redirect_to tasks_path, notice: "タスク「#{@task.name}」を作成しました"
+        else
+            render :new
+        end
     end
 
     def show
