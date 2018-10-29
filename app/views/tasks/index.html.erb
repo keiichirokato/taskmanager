@@ -2,23 +2,26 @@
   <p><%= flash[:notice] %></p>
 <% end %>
 
-<table>
-<tr>
-  <td>id</td>
-  <td>name</td>
-  <td>detail</td>
-  <td>deadline_at</td>
-</tr>
+<table border=1>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>detail</th>
+      <th>deadline_at</th>
+    </tr>
+  </thead>
 
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.id %></td>
-    <td><%= link_to task.name, task_path(task.id) %></td>
-    <td><%= task.detail %></td>
-    <td><%= task.deadline_at %></td>
-  </tr>
-<% end %>
-
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.id %></td>
+        <td><%= link_to task.name, task_path(task.id) %></td>
+        <td><%= task.detail %></td>
+        <td><%= task.deadline_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <p>
