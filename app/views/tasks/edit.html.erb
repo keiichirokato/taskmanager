@@ -1,5 +1,12 @@
 <h2>タスク編集</h2>
  
+<% if @task.errors.any? %>
+    <h3><%= @task.errors.count %>件のエラーがあります。</h3>
+    <% @task.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+<% end %>
+
 <%= render "form" %>
 
 <%= link_to "タスクを削除する", task_path(@task.id), method: :delete %>

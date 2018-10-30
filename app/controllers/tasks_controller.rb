@@ -1,6 +1,16 @@
 class TasksController < ApplicationController
     def index
-        @tasks = Task.order('created_at DESC')
+        @sort = params[:sort].blank? ? 'id' : params[:sort]
+
+        if @sort  == session[:sort]
+            @direction = session[:direction] == 'ASC' ? 'DESC' : 'ASC'
+         else
+            @direction = 'ASC'
+        end
+
+        session[:sort] = @sort
+        session[:direction] = @direction
+        @tasks = Task.order(@sort + ' ' + @direction)
     end
 
     def new
@@ -26,8 +36,11 @@ class TasksController < ApplicationController
 
     def update
         @task = find_task_by_id
-        @task.update(task_params)
-        redirect_to tasks_path, notice: "タスク「#{@task.name}」を更新しました"
+        if @task.update(task_params)
+            redirect_to tasks_path, notice: "タスク「#{@task.name}」を更新しました"
+        else
+            render :edit
+        end
     end
 
     def destroy
@@ -38,7 +51,7 @@ class TasksController < ApplicationController
 
     private
     def task_params
-        params.require(:task).permit(:name, :detail)
+        params.require(:task).permit(:name, :detail, :deadline_at)
     end
     
     def find_task_by_id
