@@ -1,6 +1,16 @@
 class TasksController < ApplicationController
     def index
-        @tasks = Task.order('created_at DESC')
+        @sort = params[:sort].blank? ? 'id' : params[:sort]
+
+        if @sort  == session[:sort]
+            @direction = session[:direction] == 'ASC' ? 'DESC' : 'ASC'
+         else
+            @direction = 'ASC'
+        end
+
+        session[:sort] = @sort
+        session[:direction] = @direction
+        @tasks = Task.order(@sort + ' ' + @direction)
     end
 
     def new

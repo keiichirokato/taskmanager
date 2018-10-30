@@ -2,13 +2,15 @@
   <p><%= flash[:notice] %></p>
 <% end %>
 
+<p>【ソート】<%= session[:sort] %>【順序】<%= session[:direction] %></p>
+
 <table border=1>
   <thead>
     <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>detail</th>
-      <th>deadline_at</th>
+      <th><%= link_to "id", tasks_path(:sort => "id")%></th>
+      <th><%= link_to "name", tasks_path(:sort => "name")%></th>
+      <th><%= link_to "detail", tasks_path(:sort => "detail")%></th>
+      <th><%= link_to "deadline_at", tasks_path(:sort => "deadline_at")%></th>
     </tr>
   </thead>
 
