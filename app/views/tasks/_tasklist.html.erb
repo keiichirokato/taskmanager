@@ -1,0 +1,23 @@
+<table border=1>
+  <thead>
+    <tr>
+      <th><%= link_to "id", tasks_path(:sort => "id")%></th>
+      <th><%= link_to "name", tasks_path(:sort => "name")%></th>
+      <th><%= link_to "detail", tasks_path(:sort => "detail")%></th>
+      <th><%= link_to "deadline_at", tasks_path(:sort => "deadline_at")%></th>
+      <th><%= link_to "status", tasks_path(:sort => "status")%></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.id %></td>
+          <td><%= link_to task.name, task_path(task.id) %></td>
+          <td><%= task.detail %></td>
+          <td><%= task.deadline_at %></td>
+          <td><%= task.status %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
