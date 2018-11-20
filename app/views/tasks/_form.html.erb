@@ -13,6 +13,11 @@
     <%= f.label :deadline_at %>
     <%= f.date_select :deadline_at %>
     </p>
+
+    <p>
+    <%= f.label :status %>
+    <%= f.select(:status, [['ToDo', "todo"], ['Doing', "doing"], ['Done', "done"]]) %>
+    </p>
     
     <%= f.submit %>
   
